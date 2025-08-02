@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <sstream>
+#include <iostream>
 
 #define NS_PRIVATE_IMPLEMENTATION
 #define CA_PRIVATE_IMPLEMENTATION
@@ -128,7 +129,8 @@ MTL::Library* load_default_library(MTL::Device* device) {
   }
 
   // Finally try default_mtllib_path
-  std::tie(lib, error[3]) = load_library_from_path(device, default_mtllib_path);
+  std::cout << "Trying to load default metallib from path:  mlx.metallib" << std::endl;
+  std::tie(lib, error[3]) = load_library_from_path(device, "mlx.metallib");
   if (!lib) {
     std::ostringstream msg;
     msg << "Failed to load the default metallib. ";
